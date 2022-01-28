@@ -18,16 +18,16 @@
             <h1>Blackjack Game</h1>
             <h2>Let's Play</h2>
             <div class="table-container">
-                <div class="user-table-side">
-                    <div id="userScoreBox">Your Score: <span id="userScore"></span></div>
+                <div class="user-table-side" id="userTableSide">
+                    <div id="userScoreBox">User Score: <span id="userScore"></span></div>
                 </div>
-                <div class="boat-table-side">
+                <div class="boat-table-side" id="boatTableSide">
                     <div id="boatScoreBox">Boat Score: <span id="boatScore"></span></div>
                 </div>
             </div>
             <div class="btn-control-container">
-                <button id="btnHit" class="btn btn-primary">Hit</button>
-                <button id="btnStand" class="btn btn-warning">Stand</button>
+                <button id="btnHit" class="btn btn-primary" onclick="addCard()">Hit</button>
+                <button id="btnStand" class="btn btn-warning" onclick="switchTurn()">Stand</button>
                 <button id="btnDeal" class="btn btn-danger">Deal</button>
             </div>
             <div>
@@ -38,9 +38,9 @@
                         <th>Draws</th>
                     </tr>
                     <tr id="resultRow">
-                        <td><span>1</span></td>
-                        <td><span>2</span></td>
-                        <td><span>3</span></td>
+                        <td><span>0</span></td>
+                        <td><span>0</span></td>
+                        <td><span>0</span></td>
                     </tr>
                 </table>
             </div>
