@@ -24,15 +24,17 @@
     background-repeat: no-repeat;
     background-size: 100% 100%;
     min-height: 50vh;
-    z-index: 2;
     display: flex;
     color:white;
     font-size: 30px;
+    border-radius: 30px;
 }
 .table-container>div{
     width:50%;
-    border: 2px solid black;
     min-height: 300px;
+}
+.table-container div.boat-table-side{
+    box-shadow: 1px -2px 20px 0px whitesmoke;
 }
 .btn-control-container{
     width:400px;
