@@ -6,12 +6,12 @@
 .main-container{
     position:relative;
     z-index:2;
-    width:70%;
+    width:80%;
     margin:0 auto;
     background-color: pink;
     min-height: 70vh;
     text-align: center;
-    padding:30px 0px;
+    padding:30px;
     border: 20px solid whitesmoke;
     border-radius: 30px;
     background-color: #bd9ea382;
@@ -62,9 +62,17 @@
 table{
     width:300px;
     margin:0px auto;   
+    display: inline-block;
+    box-shadow: inset 0px 0px 20px 14px #73726c;
 }
-table,tr,th,td{
-    border:1px solid black;
+table,th,td{
+    border:5px solid rgb(150, 144, 144);
+    border-radius: 30px;
+    padding:10px 20px;
+    border-radius: 30px;
+}
+th, td{
+    border-radius:30px;
 }
 video{
     position: fixed;
@@ -75,4 +83,10 @@ video{
  width: auto;
  height: auto;
  transform: translate(-50%, -50%);
+}
+button{
+    border:3px solid white;
+    background-color: #2e3031;
+    color: white;
+    /* box-shadow: inset 0px 0px 20px 14px #73726c; */
 }

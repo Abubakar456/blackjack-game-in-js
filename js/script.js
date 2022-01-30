@@ -1,6 +1,10 @@
+
 let turn = 'user';
-function addCard() {
-    // console.log(getRandomImage());
+let userScore = 0;
+let boatScore = 0;
+
+function addCard(activePlayer) {
+    console.log(activePlayer.id);
     let randomCard = getRandomImage();
 
     let newCard = document.createElement('img');
@@ -8,33 +12,106 @@ function addCard() {
     newCard.setAttribute('src', randomCard.cardSource);
     newCard.setAttribute('width', '200px');
     newCard.setAttribute('height', '300px');
-
-    switch (turn) {
-        case 'user':
-            let userContainer = document.getElementById('userTableSide');
-            userContainer.appendChild(newCard);
-            break;
-        case 'boat':
-            let boatContainer = document.getElementById('boatTableSide');
-            boatContainer.appendChild(newCard);
-            break;
-    }
-}
-function switchTurn() {
-    if (turn === 'user') {
-        turn = 'boat';
+    let id;
+    if (activePlayer.id === 'btnHit') {
+        id = 'userScore';
+        if (userScore < 21) {
+            document.getElementById('userTableSide').appendChild(newCard);
+            
+            if(randomCard.cardName === 'A'){
+                if(userScore + randomCard.cardScore[1] <= 21){
+                    userScore += randomCard.cardScore[1];
+                    console.log(randomCard.cardScore[1]);
+                }
+                else{
+                    userScore += randomCard.cardScore[0];
+                    console.log(randomCard.cardScore[0])
+                }
+            }
+            else{
+                userScore += randomCard.cardScore;
+            }
+            if(userScore > 21){
+                addScore('Bust!', id);
+            }
+           
+            addScore(userScore, id);
+            console.log(userScore);
+        }
     }
     else {
-        turn = 'user';
+        if (boatScore <= 15) {
+            id = 'boatScore';
+            document.getElementById('boatTableSide').appendChild(newCard);
+            if(randomCard.cardName === 'A'){
+                if(boatScore + randomCard.cardScore[1] <= 21){
+                    boatScore += randomCard.cardScore[1];
+                    console.log(randomCard.cardScore[1]);
+                }
+                else{
+                    boatScore += randomCard.cardScore[0];
+                    console.log(randomCard.cardScore[0])
+                }
+            }
+            else{
+                boatScore += randomCard.cardScore;
+            }                      
+            addScore(boatScore, id);
+            console.log(boatScore);
+            if(boatScore >= 21)
+            {
+                resultActions();
+            }
+        }
+        else{
+            resultActions();
+        }
     }
-    console.log(turn);
+}
+
+function addScore(score, id) {
+    document.getElementById(id).innerText = score;
+}
+
+function dealGame() {
+    let cards = document.querySelectorAll('.table-container img');
+    console.log(cards);
+    for (let i = 0; i < cards.length; i++) {
+        cards[i].remove();
+    }
+}
+function resultActions(){
+    let spans = document.getElementsByTagName('span');
+    changeResultMsg(getResult());
+    userScore = 0;
+    boatScore = 0;
+    spans[0].innerText = userScore;
+    spans[1].innerText = boatScore;
+}
+
+function getResult(){
+    let msg;
+    if((userScore <= 21 && boatScore > 21) || (userScore > boatScore)){
+        msg = 'You Win!';
+    }
+    else if((boatScore <= 21 && userScore > 21) || (boatScore > userScore)){
+        msg = 'Tou Lost!'; 
+    }
+    else{
+        msg = 'You Draw!'
+    }
+    return msg;
+}
+
+function changeResultMsg(msg){
+    document.getElementById('resultContainer').innerText = msg;
 }
 
 function getRandomImage() {
     let deck = [
         {
             cardName: 'A',
-            cardScore: 11,
+            cardScore: [1,11],
             cardSource: '../images/A.png',
         },
         {
@@ -99,6 +176,5 @@ function getRandomImage() {
         },
     ];
     let randNum = Math.floor(Math.random() * 13);
-    console.log(randNum);
     return deck[randNum];
 }

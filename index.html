@@ -11,42 +11,42 @@
 <body>
     <div>
         <video autoplay muted loop>
-            <source src="https://dm0qx8t0i9gc9.cloudfront.net/watermarks/video/PDaTSuJ/videoblocks-3d-rendering-hexagon-white-grid-pattern-technology-background-loop_bjq_y773e__9ed9ec67040290e55a0f16aac93802ec__P360.mp4">
+            <source src="./video/bg-video.mp4">
         </video>
     
          <div class="main-container">
             <h1>Blackjack Game</h1>
-            <h2>Let's Play</h2>
+            <h2 id="resultContainer">Let's Play</h2>
             <div class="table-container">
-                <div class="user-table-side" id="userTableSide">
-                    <div id="userScoreBox">User Score: <span id="userScore"></span></div>
+                <div class="user-table-side" id="userSide">
+                    <div id="userScoreBox">User : <span id="userScore"></span></div>
                 </div>
-                <div class="boat-table-side" id="boatTableSide">
-                    <div id="boatScoreBox">Boat Score: <span id="boatScore"></span></div>
+                <div class="boat-table-side" id="boatSide">
+                    <div id="boatScoreBox">Boat : <span id="boatScore"></span></div>
                 </div>
             </div>
             <div class="btn-control-container">
-                <button id="btnHit" class="btn btn-primary" onclick="addCard()">Hit</button>
-                <button id="btnStand" class="btn btn-warning" onclick="switchTurn()">Stand</button>
-                <button id="btnDeal" class="btn btn-danger">Deal</button>
+                <button id="btnHit" >Hit</button>
+                <button id="btnStand" >Stand</button>
+                <button id="btnDeal" >Deal</button>
             </div>
             <div>
                 <table>
                     <tr>
                         <th>Wins</th>
-                        <th>Losses</th>
+                        <th>Loss</th>
                         <th>Draws</th>
                     </tr>
                     <tr id="resultRow">
-                        <td><span>0</span></td>
-                        <td><span>0</span></td>
-                        <td><span>0</span></td>
+                        <td><b><span id="winScore">0</span></b></td>
+                        <td><b><span id="lossScore">0</span></b></td>
+                        <td><b><span id="drawScore">0</span></b></td>
                     </tr>
                 </table>
             </div>
         </div> -->
     </div>
-    <script src="js/script.js"></script>
+    <script src="js/main.js"></script>
 </body>
 
 </html>
